@@ -1,3 +1,8 @@
+using Company.Data.Contexts;
+using Company.Repository.Interfaces;
+using Company.Repository.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 namespace Compny.Web
 {
     public class Program
@@ -9,8 +14,13 @@ namespace Compny.Web
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+            builder.Services.AddDbContext<CompanyDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
 
+            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
