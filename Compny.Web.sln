@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compny.Web", "Compny.Web\Compny.Web.csproj", "{07FB0F31-6191-4CFE-8D9E-2D80F1D360A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compant.Data", "Data.Models\Compant.Data.csproj", "{9B5B0D62-4451-4CFA-A7B9-E71611FC7ADF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Data", "Data.Models\Company.Data.csproj", "{9B5B0D62-4451-4CFA-A7B9-E71611FC7ADF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Repository", "Company.Repository\Company.Repository.csproj", "{4E14DCB1-1ED1-4129-8BDE-39E1A6FC4D63}"
 EndProject
