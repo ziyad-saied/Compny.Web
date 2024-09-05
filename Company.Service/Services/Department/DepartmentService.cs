@@ -32,7 +32,7 @@ namespace Company.Service.Services
 
         public void Delete(Department department)
         {
-            throw new NotImplementedException();
+            _departmentRepository.Delete(department);
         }
 
         public ICollection<Department> GetAll()
