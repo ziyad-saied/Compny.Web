@@ -2,7 +2,7 @@ using Company.Data.Contexts;
 using Company.Repository.Interfaces;
 using Company.Repository.Repositories;
 using Company.Service.Interfaces;
-using Company.Service.Services.Department;
+using Company.Service.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.Intrinsics.X86;
 

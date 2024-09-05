@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Company.Service.Services;
+using Company.Data.Entities;
 
-namespace Company.Service.Services.Department
+namespace Company.Service.Services
 {
     public class DepartmentService : IDepartmentService
     {
@@ -17,28 +19,39 @@ namespace Company.Service.Services.Department
             _departmentRepository = departmentRepository;
         }
 
-        public void Add(Data.Entities.Department department)
+        public void Add(Department department)
+        {
+            var mappedDepartment = new Department
+            {
+                Code = department.Code,
+                Name = department.Name,
+                CreateAt = DateTime.Now
+            };
+            _departmentRepository.Add(mappedDepartment);
+        }
+
+        public void Delete(Department department)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Data.Entities.Department department)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<Data.Entities.Department> GetAll()
+        public ICollection<Department> GetAll()
         {
             var departments = _departmentRepository.GetAll();
             return departments;
         }
 
-        public Data.Entities.Department GetById(int id)
+        public Department GetById(int? id)
         {
-            throw new NotImplementedException();
+            if (id is null)
+                return null;
+            var department = _departmentRepository.GetById(id.Value); 
+            if (department is null)
+                return null;
+            return department;
         }
 
-        public void Update(Data.Entities.Department department)
+        public void Update(Department department)
         {
             throw new NotImplementedException();
         }
