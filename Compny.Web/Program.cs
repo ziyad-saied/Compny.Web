@@ -1,7 +1,10 @@
 using Company.Data.Contexts;
 using Company.Repository.Interfaces;
 using Company.Repository.Repositories;
+using Company.Service.Interfaces;
+using Company.Service.Services.Department;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.Intrinsics.X86;
 
 namespace Compny.Web
 {
@@ -20,6 +23,8 @@ namespace Compny.Web
             });
 
             builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

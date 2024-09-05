@@ -5,15 +5,15 @@ namespace Compny.Web.Controllers
 {
     public class DepartmentController : Controller
     {
-        private readonly IDepartmentRepository _departmentRepository;
+        private readonly IDepartmentRepository _departmentService;
 
-        public DepartmentController(IDepartmentRepository departmentRepository)
+        public DepartmentController(IDepartmentRepository departmentService)
         {
-            _departmentRepository = departmentRepository;
+            _departmentService = departmentService;
         }
         public IActionResult Index()
         {
-            var departments = _departmentRepository.GetAll();
+            var departments = _departmentService.GetAll();
             return View(departments);
         }
     }
