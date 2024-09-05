@@ -53,7 +53,7 @@ namespace Company.Service.Services
 
         public void Update(Department department)
         {
-            throw new NotImplementedException();
+            _departmentRepository.Update(department);
         }
     }
 }

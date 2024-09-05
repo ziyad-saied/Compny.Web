@@ -44,13 +44,28 @@ namespace Compny.Web.Controllers
             }
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(int id,string viewName="Details")
         {
             var department = _departmentService.GetById(id);
 
             if (department is null)
                 return RedirectToAction("NotFound Page",null,"Home");
-            return View(department);
+            return View(viewName,department);
+        }
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            return Details(id,"Update");
+        }
+        [HttpPost]
+        public IActionResult Update(int? id,Department department)
+        {
+            if(department.Id != id)
+                return RedirectToAction("NotFound Page", null, "Home");
+            _departmentService.Update(department);
+
+            return RedirectToAction(nameof(Index));
+
         }
     }
 }
