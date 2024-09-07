@@ -33,6 +33,7 @@ namespace Compny.Web
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddAutoMapper(x => x.AddProfile(new EmployeeProfile()));
+            builder.Services.AddAutoMapper(x => x.AddProfile(new DepartmentProfile()));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
