@@ -16,7 +16,7 @@ namespace Compny.Web.Controllers
         public IActionResult Index()
         {
             var departments = _departmentService.GetAll();
-            TempData.Keep("TextTempMessage");
+         //   TempData.Keep("TextTempMessage");
             return View(departments);
         }
 
