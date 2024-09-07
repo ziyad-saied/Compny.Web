@@ -15,7 +15,6 @@ namespace Compny.Web.Controllers
             _employeeService = employeeService;
             _departmentService = departmentService;
         }
-        [HttpGet]
         public IActionResult Index(string searchInp)
         {
             //ViewBag.Message = "Hello From EmployeeDto Index (ViewBag)";
