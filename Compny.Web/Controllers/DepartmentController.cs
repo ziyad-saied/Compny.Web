@@ -16,12 +16,13 @@ namespace Compny.Web.Controllers
         public IActionResult Index()
         {
             var departments = _departmentService.GetAll();
+            TempData.Keep("TextTempMessage");
             return View(departments);
         }
 
         [HttpGet]
         public IActionResult Create() 
-        { 
+        {
             return View();
         }
         [HttpPost]
@@ -32,6 +33,9 @@ namespace Compny.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     _departmentService.Add(department);
+                    
+                    TempData["TextTempMessage"] = "Hello From Employee Index (TempData)";
+
                     return RedirectToAction(nameof(Index));
                 }
                 ModelState.AddModelError("DepartmentError", "ValidationErrors");

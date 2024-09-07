@@ -1,5 +1,6 @@
 ﻿using Company.Data.Entities;
 using Company.Service.Interfaces;
+using Company.Service.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Compny.Web.Controllers
@@ -7,14 +8,19 @@ namespace Compny.Web.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IDepartmentService _departmentService;
 
-        public EmployeeController(IEmployeeService employeeService)
+        public EmployeeController(IEmployeeService employeeService,IDepartmentService departmentService)
         {
             _employeeService = employeeService;
+            _departmentService = departmentService;
         }
         [HttpGet]
         public IActionResult Index(string searchInp)
         {
+            ViewBag.Message = "Hello From Employee Index (ViewBag)";
+            ViewData["TextMessage"] = "Hello From Employee Index (ViewData)";
+
             IEnumerable<Employee> employees = new List<Employee>(); 
             if (string.IsNullOrEmpty(searchInp))
                 employees = _employeeService.GetAll();
@@ -25,7 +31,25 @@ namespace Compny.Web.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            var department = _departmentService.GetAll(); 
+            return View(department);
+        }
+        [HttpPost]
+        public IActionResult Create(Employee employee)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _employeeService.Add(employee);
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(employee);
+            }
+            catch (Exception)
+            {
+                return View(employee);
+            }
         }
     }
 }
