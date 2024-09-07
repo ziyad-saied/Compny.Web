@@ -1,13 +1,14 @@
 ﻿using Company.Data.Entities;
+using Company.Service.Interfaces.Department.DepartmentDto;
 
 namespace Company.Service.Interfaces
 {
     public interface IDepartmentService
     {
-        Department GetById(int? id);
-        ICollection<Department> GetAll();
-        void Add(Department department);
-        void Update(Department department);
-        void Delete(Department department);
+        DepartmentDto GetById(int? id);
+        ICollection<DepartmentDto> GetAll();
+        void Add(DepartmentDto department);
+        void Update(DepartmentDto department);
+        void Delete(DepartmentDto department);
     }
 }

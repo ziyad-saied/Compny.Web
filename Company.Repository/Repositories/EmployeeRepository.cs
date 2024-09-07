@@ -11,15 +11,18 @@ namespace Company.Repository.Repositories
 {
     public class EmployeeRepository :GenericRepository<Employee>, IEmployeeRepository
     {
+        private readonly CompanyDbContext _context;
 
         public EmployeeRepository(CompanyDbContext context) :base(context) 
         {
+            _context = context;
         }
 
-        public Employee GetEmployeeByName(string name)
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Employee> GetEmployeeByName(string name)
+            =>_context.Employees.Where(x=>x.Name.Trim().ToLower().Contains(name.Trim().ToLower())||
+            x.Email.Trim().ToLower().Contains(name.Trim().ToLower())||
+            x.PhoneNumber.Trim().ToLower().Contains(name.Trim().ToLower())
+            ).ToList();
 
         public ICollection<Employee> GetEmployeesByAddress(string address)
         {
