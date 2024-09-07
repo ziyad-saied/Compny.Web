@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Company.Service.Services;
 using Company.Data.Entities;
+using Company.Service.Interfaces.Department.DepartmentDto;
 
 namespace Company.Service.Services
 {
@@ -19,9 +20,9 @@ namespace Company.Service.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void Add(Department department)
+        public void Add(DepartmentDto department)
         {
-            var mappedDepartment = new Department
+            var mappedDepartment = new DepartmentDto
             {
                 Code = department.Code,
                 Name = department.Name,
@@ -31,19 +32,19 @@ namespace Company.Service.Services
             _unitOfWork.complete();
         }
 
-        public void Delete(Department department)
+        public void Delete(DepartmentDto department)
         {
             _unitOfWork.DepartmentRepository.Delete(department);
             _unitOfWork.complete();
         }
 
-        public ICollection<Department> GetAll()
+        public ICollection<DepartmentDto> GetAll()
         {
             var departments = _unitOfWork.DepartmentRepository.GetAll();
             return departments;
         }
 
-        public Department GetById(int? id)
+        public DepartmentDto GetById(int? id)
         {
             if (id is null)
                 return null;
@@ -53,7 +54,7 @@ namespace Company.Service.Services
             return department;
         }
 
-        public void Update(Department department)
+        public void Update(DepartmentDto department)
         {
             _unitOfWork.DepartmentRepository.Update(department);
             _unitOfWork.complete();

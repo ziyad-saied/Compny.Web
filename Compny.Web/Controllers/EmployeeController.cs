@@ -1,6 +1,6 @@
 ﻿using Company.Data.Entities;
 using Company.Service.Interfaces;
-using Company.Service.Services;
+using Company.Service.Interfaces.Employee.EmployeeDto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Compny.Web.Controllers
@@ -18,10 +18,10 @@ namespace Compny.Web.Controllers
         [HttpGet]
         public IActionResult Index(string searchInp)
         {
-            //ViewBag.Message = "Hello From Employee Index (ViewBag)";
-            //ViewData["TextMessage"] = "Hello From Employee Index (ViewData)";
+            //ViewBag.Message = "Hello From EmployeeDto Index (ViewBag)";
+            //ViewData["TextMessage"] = "Hello From EmployeeDto Index (ViewData)";
 
-            IEnumerable<Employee> employees = new List<Employee>(); 
+            IEnumerable<EmployeeDto> employees = new List<EmployeeDto>(); 
             if (string.IsNullOrEmpty(searchInp))
                 employees = _employeeService.GetAll();
             else
@@ -35,7 +35,7 @@ namespace Compny.Web.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(EmployeeDto employee)
         {
             try
             {
