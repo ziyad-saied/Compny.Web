@@ -1,4 +1,6 @@
 ﻿using Company.Service.Interfaces.Department.DepartmentDto;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
 
 namespace Company.Service.Interfaces.Employee.EmployeeDto
 {
@@ -12,6 +14,7 @@ namespace Company.Service.Interfaces.Employee.EmployeeDto
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime HiringDate { get; set; }
+        public IFormFile Image { get; set; }
         public string ImageUrl { get; set; }
         public DepartmentDto Department { get; set; }
         public int? DepartmentId { get; set; }
