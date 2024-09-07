@@ -2,6 +2,7 @@ using Company.Data.Contexts;
 using Company.Repository.Interfaces;
 using Company.Repository.Repositories;
 using Company.Service.Interfaces;
+using Company.Service.Mapping;
 using Company.Service.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.Intrinsics.X86;
@@ -31,6 +32,7 @@ namespace Compny.Web
             builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddAutoMapper(x => x.AddProfile(new EmployeeProfile()));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
